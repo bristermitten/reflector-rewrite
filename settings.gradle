@@ -8,4 +8,5 @@ pluginManagement {
     }
 }
 rootProject.name = 'reflector-rewrite'
+include 'code-generator'
 

@@ -9,15 +9,15 @@ import java.lang.reflect.Method
 
 class DefaultPropertyFactory : PropertyFactory {
 
-    override fun <T> createProperty(field: Field): Property<T> {
+    override fun <T : Any> createProperty(field: Field): Property<Any, T> {
         return FieldProperty(field)
     }
 
-    override fun <T> createProperty(field: Field, getter: Method): Property<T> {
+    override fun <T : Any> createProperty(field: Field, getter: Method): Property<Any, T> {
         return FieldAndGetterProperty(field, getter)
     }
 
-    override fun <T> createProperty(field: Field, getter: Method, setter: Method): Property<T> {
+    override fun <T : Any> createProperty(field: Field, getter: Method, setter: Method): Property<Any,T> {
         return FullProperty(field, getter, setter)
     }
 }

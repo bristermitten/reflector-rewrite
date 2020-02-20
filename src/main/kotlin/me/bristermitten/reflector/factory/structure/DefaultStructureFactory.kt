@@ -9,16 +9,16 @@ class DefaultStructureFactory(
     private val propertySearcher: PropertySearcher
 ) : StructureFactory {
 
-    private val cache: Cache<Class<*>, Structure<*>> =
-        Cache(this::create)
+    private val cache: Cache<Class<*>, Structure<*>> = Cache(this::create)
 
-    override fun <T> createStructure(clazz: Class<T>): Structure<T> {
-        @Suppress("UNCHECKED_CAST")
-        return cache.get(clazz) as Structure<T>
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : Any> createStructure(clazz: Class<T>): Structure<T> {
+        return cache[clazz] as Structure<T>
     }
 
     private fun create(clazz: Class<*>): Structure<*> {
-        return ClassStructure(clazz, propertySearcher.findProperties(clazz))
+        @Suppress("UNCHECKED_CAST")
+        return ClassStructure(clazz as Class<Any>, propertySearcher.findProperties(clazz))
     }
 
 }

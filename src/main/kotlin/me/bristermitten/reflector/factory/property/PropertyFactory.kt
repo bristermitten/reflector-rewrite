@@ -5,7 +5,7 @@ import java.lang.reflect.Field
 import java.lang.reflect.Method
 
 interface PropertyFactory {
-    fun <T> createProperty(field: Field): Property<T>
-    fun <T> createProperty(field: Field, getter: Method): Property<T>
-    fun <T> createProperty(field: Field, getter: Method, setter: Method): Property<T>
+    fun <T : Any> createProperty(field: Field): Property<Any, T>
+    fun <T : Any> createProperty(field: Field, getter: Method): Property<Any, T>
+    fun <T : Any> createProperty(field: Field, getter: Method, setter: Method): Property<Any, T>
 }
