@@ -1,8 +1,9 @@
 package me.bristermitten.reflector.entity
 
-interface Element<T> {
+import me.bristermitten.reflector.entity.info.Info
 
+interface Element<T> {
     val name: String
     val type: Class<T>
-
+    val info: Info
 }

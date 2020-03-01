@@ -42,8 +42,6 @@ class MainTest {
 
         println(reflector.getProperty(Employee::name)[employee])
         println(property[employee])
-
-
     }
 
     @Test
